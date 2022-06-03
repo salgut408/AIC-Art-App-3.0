@@ -16,6 +16,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentSearchBinding.inflate(layoutInflater)
         viewModel = (activity as MainActivity).viewModel
 
     }

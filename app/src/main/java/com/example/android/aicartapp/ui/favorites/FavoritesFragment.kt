@@ -8,14 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
+import com.example.android.aicartapp.databinding.FragmentFavoritesBinding
 import com.example.android.aicartapp.databinding.FragmentSearchBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
 
-class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
+class FavoritesFragment : Fragment() {
     lateinit var viewModel: MainArtViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentFavoritesBinding.inflate(layoutInflater)
         viewModel = (activity as MainActivity).viewModel
 
     }
