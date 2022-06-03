@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--id's used for the menu & navigation-->
+
+
+
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +28,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.android.aicartapp.ui.dashboard.SearchFragment"
+        android:name="com.example.android.aicartapp.ui.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -37,7 +43,7 @@
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.android.aicartapp.ui.notifications.FavoritesFragment"
+        android:name="com.example.android.aicartapp.ui.favorites.FavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" >
         <action

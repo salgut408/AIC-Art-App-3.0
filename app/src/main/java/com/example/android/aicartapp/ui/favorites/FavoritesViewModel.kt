@@ -1,4 +1,4 @@
-package com.example.android.aicartapp.ui.notifications
+package com.example.android.aicartapp.ui.favorites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

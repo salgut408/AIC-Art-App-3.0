@@ -1,4 +1,4 @@
-package com.example.android.aicartapp.ui.dashboard
+package com.example.android.aicartapp.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

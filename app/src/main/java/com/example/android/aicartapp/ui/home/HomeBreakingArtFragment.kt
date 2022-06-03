@@ -28,10 +28,7 @@ class HomeBreakingArtFragment : Fragment() {
         _binding = FragmentBreakingArtBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeBreakingArtViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

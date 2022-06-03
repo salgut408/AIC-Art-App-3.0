@@ -1,15 +1,14 @@
-package com.example.android.aicartapp.ui.notifications
+package com.example.android.aicartapp.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.aicartapp.databinding.FragmentSearchBinding
 
-class FavoritesFragment : Fragment() {
+class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
 
@@ -22,16 +21,13 @@ class FavoritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val favoritesViewModel =
-            ViewModelProvider(this).get(FavoritesViewModel::class.java)
+        val searchViewModel =
+            ViewModelProvider(this).get(SearchViewModel::class.java)
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        favoritesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

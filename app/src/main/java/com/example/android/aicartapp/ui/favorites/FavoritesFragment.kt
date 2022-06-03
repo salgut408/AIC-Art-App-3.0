@@ -1,15 +1,14 @@
-package com.example.android.aicartapp.ui.dashboard
+package com.example.android.aicartapp.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.aicartapp.databinding.FragmentSearchBinding
 
-class SearchFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
 
@@ -22,16 +21,13 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val searchViewModel =
-            ViewModelProvider(this).get(SearchViewModel::class.java)
+        val favoritesViewModel =
+            ViewModelProvider(this).get(FavoritesViewModel::class.java)
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        searchViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 
