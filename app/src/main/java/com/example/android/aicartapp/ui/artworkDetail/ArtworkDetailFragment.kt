@@ -6,25 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
+import com.example.android.aicartapp.ui.MainArtViewModel
 
-class ArtworkDetailFragment : Fragment() {
+class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
+    lateinit var viewModel: MainArtViewModel
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as MainActivity).viewModel
 
-
-    private lateinit var viewModel: ArtworkDetailViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_artwork_detail, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ArtworkDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
+
 
 }
