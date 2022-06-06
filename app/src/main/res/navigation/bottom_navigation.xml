@@ -59,5 +59,9 @@
         android:id="@+id/artworkDetailFragment"
         android:name="com.example.android.aicartapp.ui.artworkDetail.ArtworkDetailFragment"
         android:label="fragment_artwork_detail"
-        tools:layout="@layout/fragment_artwork_detail" />
+        tools:layout="@layout/fragment_artwork_detail" >
+        <argument
+            android:name="selectedArtwork"
+            app:argType="com.example.example.ArtworkObject" />
+    </fragment>
 </navigation>

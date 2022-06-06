@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
 //@Parcelize
 // extend parcelable when ready to parcelize
@@ -12,7 +13,8 @@ import kotlinx.android.parcel.Parcelize
 @Entity(
   tableName = "artworks"
 )
-data class ArtworkObject (
+
+ data class ArtworkObject (
 
   @SerializedName("_score"               ) val score               : Double?  = null,
   @SerializedName("is_public_domain"     ) val isPublicDomain      : Boolean? = null,
@@ -31,7 +33,7 @@ data class ArtworkObject (
   @SerializedName("image_id"             ) val imageId             : String?  = null,
   @SerializedName("classification_title" ) val classificationTitle : String?  = null,
   @SerializedName("longitude"            ) val longitude           : String?  = null
-)
+): Serializable
 
 
 {

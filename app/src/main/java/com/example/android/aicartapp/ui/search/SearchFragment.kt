@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
@@ -18,6 +19,7 @@ import com.example.android.aicartapp.databinding.FragmentSearchBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
 import com.example.android.aicartapp.util.Constants.Companion.SEARCH_ART_TIME_DELAY
 import com.example.android.aicartapp.util.Resource
+import com.example.example.ArtworkObject
 import kotlinx.coroutines.Job
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.MainScope
@@ -46,6 +48,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
+
+        artAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("artwork", it)
+            }
+            this.findNavController().navigate(
+                R.id.action_navigation_search_to_artworkDetailFragment,
+                bundle
+            )
+        }
 
         // delay on search request & TextChangedListener on search
         var job: Job? = null

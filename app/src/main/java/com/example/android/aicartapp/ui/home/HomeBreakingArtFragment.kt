@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
@@ -38,6 +39,17 @@ class HomeBreakingArtFragment : Fragment() {
         //binding = FragmentBreakingArtBinding.inflate(layoutInflater)
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
+
+        artAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("selectedArtwork", it)
+            }
+            this.findNavController().navigate(
+                R.id.action_navigation_home_to_artworkDetailFragment,
+                bundle
+            )
+        }
+
         viewModel.breakingArt.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {

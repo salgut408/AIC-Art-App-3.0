@@ -16,9 +16,10 @@
         android:layout_height="match_parent"
         tools:context=".ui.artworkDetail.ArtworkDetailFragment">
 
-        <WebView
-            android:id="@+id/webView"
+        <ImageView
+            android:id="@+id/deatilImageView"
             android:layout_width="match_parent"
+            android:src="@{artwork.otherImgUrl}"
             android:layout_height="match_parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
