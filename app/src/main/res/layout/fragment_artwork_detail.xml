@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:src="@{artwork.otherImgUrl}"
-            app:srcCompat="@drawable/ic_baseline_photo_library_24" />
+            pictureUrl="@{artwork.otherImgUrl}"
+           />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
