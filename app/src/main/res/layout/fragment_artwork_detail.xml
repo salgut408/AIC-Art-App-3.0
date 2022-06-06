@@ -19,8 +19,10 @@
         <ImageView
             android:id="@+id/deatilImageView"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
             android:src="@{artwork.otherImgUrl}"
-            android:layout_height="match_parent" />
+            app:srcCompat="@drawable/ic_baseline_photo_library_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

@@ -83,7 +83,7 @@ class HomeBreakingArtFragment : Fragment() {
 
     private fun setUpRecyclerView( ) {
         artAdapter = ArtAdapter()
-        rvBreakingArt.apply {
+        binding.rvBreakingArt.apply {
             adapter = artAdapter
             layoutManager = LinearLayoutManager(activity)
         }

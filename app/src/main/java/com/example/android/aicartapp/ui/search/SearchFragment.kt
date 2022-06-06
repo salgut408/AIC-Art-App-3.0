@@ -53,9 +53,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             val bundle = Bundle().apply {
                 putSerializable("artwork", it)
             }
-            this.findNavController().navigate(
-                R.id.action_navigation_search_to_artworkDetailFragment,
-                bundle
+            this.findNavController().navigate(SearchFragmentDirections.actionNavigationSearchToArtworkDetailFragment(it)
             )
         }
 
