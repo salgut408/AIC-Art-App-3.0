@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityArtBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val navView: BottomNavigationView = binding.navView
         val artRepository = ArtRepository(ArtworkDatabase(this))
         val viewModelProviderFactory = MainArtViewModelProviderFactory(artRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainArtViewModel::class.java)
 
+        binding = ActivityArtBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
