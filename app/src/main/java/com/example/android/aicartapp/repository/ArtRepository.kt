@@ -11,3 +11,6 @@ class ArtRepository(
     suspend fun getBreakingArt(fieldTerms: String, pageNumber: Int) =
         RetrofitInstance.api.getBreakingArt(fieldTerms, pageNumber)
 }
+
+    suspend fun searchNews(fieldTerms: String, searchQuery: String, pageNumber: Int) =
+        RetrofitInstance.api.searchForArt(fieldTerms, searchQuery, pageNumber)
