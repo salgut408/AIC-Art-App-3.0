@@ -7,6 +7,7 @@ import com.example.android.aicartapp.repository.ArtRepository
 import com.example.android.aicartapp.util.Constants.Companion.FIELD_TERMS
 import com.example.android.aicartapp.util.Resource
 import com.example.example.ArtResponse
+import com.example.example.ArtworkObject
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -54,6 +55,16 @@ class MainArtViewModel(
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun saveArtwork(artwork: ArtworkObject) = viewModelScope.launch {
+        artRepository.upsert(artwork)
+    }
+
+    fun getSavedArt() = artRepository.getSavedArt()
+
+    fun deleteArt(artwork: ArtworkObject) = viewModelScope.launch {
+        artRepository.deleteArtwork(artwork)
     }
 
 

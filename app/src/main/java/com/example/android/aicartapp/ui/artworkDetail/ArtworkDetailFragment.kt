@@ -11,6 +11,7 @@ import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
 import com.example.android.aicartapp.databinding.FragmentArtworkDetailBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
     lateinit var viewModel: MainArtViewModel
@@ -25,8 +26,17 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
         binding = FragmentArtworkDetailBinding.inflate(inflater)
         val artwork = ArtworkDetailFragmentArgs.fromBundle(requireArguments()).selectedArtwork
         binding.artwork = artwork
+
+
         viewModel = (activity as MainActivity).viewModel
+
+        binding.fab.setOnClickListener {
+            viewModel.saveArtwork(artwork)
+
+        }
         return binding.root
+
+
     }
 
 
