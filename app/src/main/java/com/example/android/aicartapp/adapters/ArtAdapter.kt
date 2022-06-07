@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.android.aicartapp.R
 import com.example.example.ArtworkObject
 import kotlinx.android.synthetic.main.item_artwork_preview.view.*
+import kotlinx.android.synthetic.main.item_prev_new.view.*
 
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
         inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -28,7 +29,7 @@ class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtworkObjectViewHolder {
         return ArtworkObjectViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_artwork_preview,
+                R.layout.item_prev_new,
                 parent,
                 false
             )
@@ -42,9 +43,11 @@ class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
     override fun onBindViewHolder(holder: ArtworkObjectViewHolder, position: Int) {
         val artwork = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(artwork.getOtherImgUrl()).into(ivArtworkImage)
-            tvName.text=artwork.artistDisplay
-            tv_name.text=artwork.title
+            Glide.with(this).load(artwork.getOtherImgUrl()).into(imageView)
+            textView2.text=artwork.title
+            textView3.text=artwork.artistDisplay
+            textView4.text = artwork.classificationTitle
+            textView5.text = artwork.inscriptions
             setOnClickListener {
                 onItemClickListener?.let { it(artwork) }
             }
