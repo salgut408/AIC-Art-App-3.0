@@ -5,17 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
 import com.example.android.aicartapp.adapters.ArtAdapter
 import com.example.android.aicartapp.databinding.FragmentBreakingArtBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
+import com.example.android.aicartapp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.android.aicartapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_art.*
 
@@ -55,7 +58,12 @@ class HomeBreakingArtFragment : Fragment() {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { artResponse ->
-                        artAdapter.differ.submitList(artResponse.artworkObject)
+                        artAdapter.differ.submitList(artResponse.artworkObject.toList())
+                        val totalPages = artResponse.pagination!!.total!! / QUERY_PAGE_SIZE +2
+                        isLastPage = viewModel.breakingArtPage == totalPages
+                        if(isLastPage) {
+                            binding.rvBreakingArt.setPadding(0,0,0,0)
+                        }
                     }
                 }
                 is Resource.Error -> {
@@ -75,17 +83,60 @@ class HomeBreakingArtFragment : Fragment() {
 
     private fun showProgressBar() {
         binding.paginationProgressBar.visibility = View.VISIBLE
+        isLoading=true
     }
 
     private fun hideProgressBar() {
         binding.paginationProgressBar.visibility = View.INVISIBLE
+        isLoading=false
     }
+
+
+
+
+    var isLoading = false
+    var isLastPage = false
+    var isScrolling = false
+
+    val scrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                isScrolling = true
+            }
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+            val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
+            val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeggining = firstVisibleItemPosition >=0
+            val isTotalMoreThanVisible = totalItemCount>=QUERY_PAGE_SIZE
+
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeggining &&
+                    isTotalMoreThanVisible && isScrolling
+
+            if (shouldPaginate) {
+                viewModel.getBreakingArt()
+                isScrolling = false
+            }
+
+        }
+    }
+
 
     private fun setUpRecyclerView( ) {
         artAdapter = ArtAdapter()
         binding.rvBreakingArt.apply {
             adapter = artAdapter
             layoutManager = LinearLayoutManager(activity)
+            addOnScrollListener(this@HomeBreakingArtFragment.scrollListener)
         }
     }
 

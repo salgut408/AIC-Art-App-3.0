@@ -17,9 +17,12 @@ class MainArtViewModel(
 
     val breakingArt: MutableLiveData<Resource<ArtResponse>> = MutableLiveData()
     var breakingArtPage = 1
+    var breakingArtResponse: ArtResponse? = null
 
     val searchArt: MutableLiveData<Resource<ArtResponse>> = MutableLiveData()
     var searchArtPage = 1
+    var searchArtResponse: ArtResponse? = null
+
 
     init {
         getBreakingArt()
@@ -41,7 +44,15 @@ class MainArtViewModel(
     private fun handleBreakingArtResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                return Resource.Success(resultResponse)
+                breakingArtPage++
+                if(breakingArtResponse == null) {
+                    breakingArtResponse = resultResponse
+                } else {
+                    val oldArtworks = breakingArtResponse?.artworkObject
+                    val newArtworks = resultResponse.artworkObject
+                    oldArtworks?.addAll(newArtworks)
+                }
+                return Resource.Success(breakingArtResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
@@ -51,7 +62,15 @@ class MainArtViewModel(
     private fun handleSearchNewsResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                return Resource.Success(resultResponse)
+                searchArtPage++
+                if(searchArtResponse == null) {
+                    searchArtResponse = resultResponse
+                } else {
+                    val oldArtworks = searchArtResponse?.artworkObject
+                    val newArtworks = resultResponse.artworkObject
+                    oldArtworks?.addAll(newArtworks)
+                }
+                return Resource.Success(searchArtResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
