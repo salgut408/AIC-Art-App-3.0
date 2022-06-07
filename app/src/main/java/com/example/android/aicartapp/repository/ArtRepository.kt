@@ -13,7 +13,7 @@ class ArtRepository(
         RetrofitInstance.api.getBreakingArt(fieldTerms, pageNumber)
 
 
-    suspend fun searchNews(fieldTerms: String, searchQuery: String, pageNumber: Int) =
+    suspend fun searchArt(fieldTerms: String, searchQuery: String, pageNumber: Int) =
         RetrofitInstance.api.searchForArt(fieldTerms, searchQuery, pageNumber)
 
     suspend fun upsert(artwork: ArtworkObject) = db.getArtworkDao().upsert(artwork)

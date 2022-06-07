@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val artRepository = ArtRepository(ArtworkDatabase(this))
-        val viewModelProviderFactory = MainArtViewModelProviderFactory(artRepository)
+        val viewModelProviderFactory = MainArtViewModelProviderFactory(application, artRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainArtViewModel::class.java)
 
         binding = ActivityArtBinding.inflate(layoutInflater)

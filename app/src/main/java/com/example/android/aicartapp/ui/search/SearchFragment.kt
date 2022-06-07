@@ -84,7 +84,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                         artAdapter.differ.submitList(artResponse.artworkObject.toList())
                         val totalPages =
                             artResponse.pagination!!.total!! / Constants.QUERY_PAGE_SIZE + 2
-                        isLastPage = viewModel.breakingArtPage == totalPages
+                        isLastPage = viewModel.searchArtPage == totalPages
                         if(isLastPage){
                             binding.rvSearchArt.setPadding(0,0,0,0)
                         }
