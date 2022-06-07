@@ -26,7 +26,10 @@ abstract class ArtworkDatabase : RoomDatabase() {
                 context.applicationContext,
                 ArtworkDatabase::class.java,
                 "artwork_db.db"
-            ).build()
+            ).fallbackToDestructiveMigration()
+
+
+                .build()
     }
 }
 

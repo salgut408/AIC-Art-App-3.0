@@ -44,10 +44,10 @@ class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
         val artwork = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(artwork.getOtherImgUrl()).into(imageView)
-            textView2.text=artwork.title
-            textView3.text=artwork.artistDisplay
-            textView4.text = artwork.classificationTitle
-            textView5.text = artwork.inscriptions
+            textView2.text=artwork.artistDisplay
+            textView3.text=artwork.mediumDisplay
+            textView4.text = artwork.title
+
             setOnClickListener {
                 onItemClickListener?.let { it(artwork) }
             }
