@@ -44,11 +44,9 @@ class FavoritesFragment : Fragment() {
 
         artAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("artwork", it)
+                putSerializable("selectedArtwork", it)
             }
-            this.findNavController().navigate(
-                R.id.action_navigation_search_to_artworkDetailFragment,
-                bundle
+            this.findNavController().navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(it)
             )
         }
 

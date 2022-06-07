@@ -32,6 +32,7 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
 
         binding.fab.setOnClickListener {
             viewModel.saveArtwork(artwork)
+            Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG ).show()
 
         }
         return binding.root
