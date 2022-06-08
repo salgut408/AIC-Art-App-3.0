@@ -12,7 +12,7 @@ interface ArtAPI {
     @GET("artworks/search")
     suspend fun getBreakingArt(
         @Query("fields")
-        fieldTerms: String = FIELD_TERMS,
+        fieldTerms: String,
         @Query("page")
         pageNumber: Int = 1
 //            @Query("limit")
@@ -22,7 +22,7 @@ interface ArtAPI {
     @GET("artworks/search")
     suspend fun searchForArt(
         @Query("fields")
-        fieldTerms: String = Constants.FIELD_TERMS,
+        fieldTerms: String,
         @Query("q")
         searchTerm: String,
         @Query("page")

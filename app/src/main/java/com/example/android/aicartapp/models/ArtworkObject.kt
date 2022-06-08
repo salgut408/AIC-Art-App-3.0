@@ -32,6 +32,7 @@ import java.io.Serializable
   @SerializedName("id"                   ) val id                  : Int?     = null,
   @SerializedName("image_id"             ) val imageId             : String?  = null,
   @SerializedName("classification_title" ) val classificationTitle : String?  = null,
+  @SerializedName("style_title"          ) val styleTitle          : String? = null,
   @SerializedName("longitude"            ) val longitude           : String?  = null
 ): Serializable
 

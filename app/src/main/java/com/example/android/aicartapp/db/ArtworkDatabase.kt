@@ -8,7 +8,7 @@ import com.example.example.ArtworkObject
 
 @Database(
     entities = [ArtworkObject::class],
-    version =1
+    version =2, exportSchema = false
 )
 //can move to singleton ...
 abstract class ArtworkDatabase : RoomDatabase() {
