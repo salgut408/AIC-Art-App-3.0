@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_artwork_preview.view.*
 import kotlinx.android.synthetic.main.item_prev_new.view.*
 
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
-        inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+//        inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     private val differCallback = object : DiffUtil.ItemCallback<ArtworkObject>() {
         override fun areItemsTheSame(oldItem: ArtworkObject, newItem: ArtworkObject): Boolean {
