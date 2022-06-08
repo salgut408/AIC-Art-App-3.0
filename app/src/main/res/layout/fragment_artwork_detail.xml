@@ -16,11 +16,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.artworkDetail.ArtworkDetailFragment">
 
-        <WebView
-            android:id="@+id/webView"
+        <ImageView
+            android:id="@+id/deatilImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+
+            pictureUrl="@{artwork.otherImgUrl}"
+           />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -42,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.54"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/webView"
+            app:layout_constraintTop_toTopOf="@+id/deatilImageView"
             app:layout_constraintVertical_bias="0.977" />
 
 

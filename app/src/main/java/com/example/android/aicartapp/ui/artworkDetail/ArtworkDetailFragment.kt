@@ -30,11 +30,11 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
 
 
         viewModel = (activity as MainActivity).viewModel
-
-        binding.webView.apply {
-            webViewClient = WebViewClient()
-            loadUrl(artwork.getOtherImgUrl())
-        }
+//  in case back to webview instead of image view
+//        binding.webView.apply {
+//            webViewClient = WebViewClient()
+//            loadUrl(artwork.getOtherImgUrl())
+//        }
 
         binding.fab.setOnClickListener {
             viewModel.saveArtwork(artwork)
