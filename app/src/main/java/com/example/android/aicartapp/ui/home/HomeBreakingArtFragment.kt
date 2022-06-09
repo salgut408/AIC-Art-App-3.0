@@ -46,7 +46,7 @@ class HomeBreakingArtFragment : Fragment() {
 
         artAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("selectedArtwork", it)
+                putParcelable("selectedArtwork", it)
             }
             this.findNavController().navigate(
                 R.id.action_navigation_home_to_artworkDetailFragment,

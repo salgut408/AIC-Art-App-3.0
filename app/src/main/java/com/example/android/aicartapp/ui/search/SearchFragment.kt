@@ -54,7 +54,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         artAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("artwork", it)
+                putParcelable("artwork", it)
             }
             this.findNavController().navigate(
                 SearchFragmentDirections.actionNavigationSearchToArtworkDetailFragment(it)

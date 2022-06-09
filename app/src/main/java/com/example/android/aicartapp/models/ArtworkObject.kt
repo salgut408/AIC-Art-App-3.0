@@ -13,7 +13,7 @@ import java.io.Serializable
 @Entity(
   tableName = "artworks"
 )
-
+@Parcelize
  data class ArtworkObject (
 
   @SerializedName("_score"               ) val score               : Double?  = null,
@@ -34,7 +34,7 @@ import java.io.Serializable
   @SerializedName("classification_title" ) val classificationTitle : String?  = null,
   @SerializedName("style_title"          ) val styleTitle          : String? = null,
   @SerializedName("longitude"            ) val longitude           : String?  = null
-): Serializable
+): Parcelable
 
 
 {

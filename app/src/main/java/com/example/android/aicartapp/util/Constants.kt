@@ -13,8 +13,8 @@ class Constants {
     companion object{
     const val BASE_URL = " https://api.artic.edu/api/v1/"
         const val FIELD_TERMS ="fields=" +
-                "title," +
                 "iiif_url," +
+                "title," +
                 "classification_title," +
                 "id," +
                 "style_title," +

@@ -35,6 +35,7 @@ class MainArtViewModel(
 
     init {
         getBreakingArt()
+
     }
 
     fun getBreakingArt() = viewModelScope.launch {

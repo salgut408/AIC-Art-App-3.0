@@ -12,6 +12,9 @@ interface ArtworkDao {
     @Query("SELECT * FROM artworks")
     fun getAllArtworks(): LiveData<List<ArtworkObject>>
 
+    @Query("DELETE FROM artworks")
+    fun clear()
+
     @Delete
     suspend fun deleteArtwork(artwork: ArtworkObject)
 
