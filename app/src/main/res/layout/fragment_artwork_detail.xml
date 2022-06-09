@@ -18,11 +18,11 @@
 
         <ImageView
             android:id="@+id/deatilImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
             pictureUrl="@{artwork.otherImgUrl}"
-           />
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -45,7 +45,8 @@
             app:layout_constraintHorizontal_bias="0.54"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/deatilImageView"
-            app:layout_constraintVertical_bias="0.977" />
+            app:layout_constraintVertical_bias="0.977"
+            tools:text="TEXT" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

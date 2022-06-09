@@ -53,9 +53,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("artwork", it)
-            }
+//            val bundle = Bundle().apply {
+//                putParcelable("artwork", it)
+//            }
             this.findNavController().navigate(
                 SearchFragmentDirections.actionNavigationSearchToArtworkDetailFragment(it)
             )
@@ -81,6 +81,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { artResponse ->
+
                         artAdapter.differ.submitList(artResponse.artworkObject.toList())
                         val totalPages =
                             artResponse.pagination!!.total!! / Constants.QUERY_PAGE_SIZE + 2
@@ -114,6 +115,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
     }
+
+
 
 
     var isLoading = false
@@ -155,9 +158,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun setUpRecyclerView() {
         artAdapter = ArtAdapter()
-        rvSearchArt.apply {
+        binding.rvSearchArt.apply {
             adapter = artAdapter
             layoutManager = LinearLayoutManager(activity)
+
             addOnScrollListener(this@SearchFragment.scrollListener)
         }
     }

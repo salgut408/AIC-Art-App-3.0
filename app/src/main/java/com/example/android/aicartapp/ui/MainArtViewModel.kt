@@ -72,11 +72,15 @@ class MainArtViewModel(
             response.body()?.let { resultResponse ->
                 searchArtPage++
                 if(searchArtResponse == null) {
+
                     searchArtResponse = resultResponse
                 } else {
                     val oldArtworks = searchArtResponse?.artworkObject
                     val newArtworks = resultResponse.artworkObject
+//                    oldArtworks?.addAll(0,newArtworks)
+                    oldArtworks?.clear()
                     oldArtworks?.addAll(newArtworks)
+
 
                 }
                 return Resource.Success(searchArtResponse ?: resultResponse)
