@@ -75,6 +75,9 @@ class MainArtViewModel(
 
                     searchArtResponse = resultResponse
                 } else {
+
+                    //TODO fix pagination calling clear...
+
                     val oldArtworks = searchArtResponse?.artworkObject
                     val newArtworks = resultResponse.artworkObject
 //                    oldArtworks?.addAll(0,newArtworks)
