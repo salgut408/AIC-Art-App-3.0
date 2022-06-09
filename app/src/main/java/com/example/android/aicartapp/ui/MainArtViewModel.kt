@@ -106,7 +106,7 @@ private suspend fun safeBreakingArtCall() {
             searchArt.postValue(Resource.Error("No connection"))
         }
 
-
+//
     } catch (t: Throwable) {
         when(t) {
             is IOException -> breakingArt.postValue(Resource.Error("Network  error"))
