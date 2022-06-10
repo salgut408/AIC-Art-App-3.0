@@ -9,7 +9,6 @@
 <!--        android:id="@+id/etSearch"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:hint="@string/search"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="0.5"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
@@ -24,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        app:startIconDrawable="@drawable/ic_baseline_search_24"
         android:layout_marginEnd="32dp"
         android:hint="I'm looking for..."
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,9 +33,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -43,6 +42,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchArt"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
 

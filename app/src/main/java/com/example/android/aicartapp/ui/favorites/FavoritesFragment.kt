@@ -41,7 +41,7 @@ class FavoritesFragment : Fragment() {
         viewModel = (activity as MainActivity).viewModel
 
         setUpRecyclerView()
-
+// TODO Bundle is never used
         artAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putParcelable("selectedArtwork", it)

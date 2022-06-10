@@ -63,6 +63,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         // delay on search request & TextChangedListener on search
         var job: Job? = null
+
+        // TODO add focus change listener
+//        binding.textInputEditText.setOnFocusChangeListener()
+
         binding.textInputEditText.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
@@ -165,6 +169,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             addOnScrollListener(this@SearchFragment.scrollListener)
         }
     }
+    // TODO hide keyboard
+//    private fun hideKeyboard(){
+//
+//    }
 
 
 }
