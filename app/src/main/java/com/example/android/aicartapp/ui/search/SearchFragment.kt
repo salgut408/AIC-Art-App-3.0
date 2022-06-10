@@ -63,7 +63,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         // delay on search request & TextChangedListener on search
         var job: Job? = null
-        binding.etSearch.addTextChangedListener { editable ->
+        binding.textInputEditText.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
                 delay(SEARCH_ART_TIME_DELAY)
@@ -148,7 +148,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     isTotalMoreThanVisible && isScrolling
 
             if (shouldPaginate) {
-                viewModel.searchArt(binding.etSearch.text.toString())
+                viewModel.searchArt(binding.textInputEditText.text.toString())
                 isScrolling = false
             }
 
