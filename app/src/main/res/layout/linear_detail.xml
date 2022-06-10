@@ -15,6 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/materialToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+        </SearchView>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="337dp"

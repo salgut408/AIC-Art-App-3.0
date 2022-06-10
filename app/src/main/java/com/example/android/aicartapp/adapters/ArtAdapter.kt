@@ -8,18 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.aicartapp.R
-import com.example.android.aicartapp.databinding.ItemPrevNewBinding
 import com.example.example.ArtworkObject
+import kotlinx.android.synthetic.main.item_artwork_preview.view.*
+import kotlinx.android.synthetic.main.item_prev_new.view.*
 
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
-    lateinit var binding: ItemPrevNewBinding
 //        inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
-inner class ArtworkObjectViewHolder(binding: ItemPrevNewBinding): RecyclerView.ViewHolder(binding.root) {
-    fun bind(artworkObject: ArtworkObject){
-        binding.artwork=artworkObject
-        binding.executePendingBindings()
-    }
-}
+inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     private val differCallback = object : DiffUtil.ItemCallback<ArtworkObject>() {
         override fun areItemsTheSame(oldItem: ArtworkObject, newItem: ArtworkObject): Boolean {
@@ -33,9 +28,13 @@ inner class ArtworkObjectViewHolder(binding: ItemPrevNewBinding): RecyclerView.V
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtworkObjectViewHolder {
-     val from = LayoutInflater.from(parent.context)
-         binding = ItemPrevNewBinding.inflate(from, parent, false)
-        return ArtworkObjectViewHolder(binding)
+        return ArtworkObjectViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_prev_new,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -45,18 +44,14 @@ inner class ArtworkObjectViewHolder(binding: ItemPrevNewBinding): RecyclerView.V
     override fun onBindViewHolder(holder: ArtworkObjectViewHolder, position: Int) {
         val artwork = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(artwork.getOtherImgUrl()).into(binding.imageView)
-
-        holder.also {
-
-
+            Glide.with(this).load(artwork.getOtherImgUrl()).into(imageView)
+            textView2.text=artwork.artistDisplay
+            textView3.text=artwork.title
+            textView4.text = artwork.styleTitle
 
             setOnClickListener {
                 onItemClickListener?.let { it(artwork) }
             }
-            it.bind(artwork)
-
-        }
         }
     }
 

@@ -81,6 +81,7 @@ class MainArtViewModel(
                     val oldArtworks = searchArtResponse?.artworkObject
                     val newArtworks = resultResponse.artworkObject
 //                    oldArtworks?.addAll(0,newArtworks)
+
                     oldArtworks?.clear()
                     oldArtworks?.addAll(newArtworks)
 

@@ -37,9 +37,9 @@
             android:textColor="#000000"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintHorizontal_bias="0.563"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="691dp"
             tools:text="TEXT" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
