@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
@@ -35,6 +36,11 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
 //            webViewClient = WebViewClient()
 //            loadUrl(artwork.getOtherImgUrl())
 //        }
+
+        binding.imageView2.setOnClickListener {
+            this.findNavController().navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment())
+        }
+
 
         binding.fab.setOnClickListener {
             viewModel.saveArtwork(artwork)

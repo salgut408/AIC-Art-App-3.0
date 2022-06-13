@@ -49,8 +49,7 @@ class HomeBreakingArtFragment : Fragment() {
                 putParcelable("selectedArtwork", it)
             }
             this.findNavController().navigate(
-                R.id.action_navigation_home_to_artworkDetailFragment,
-                bundle
+                HomeBreakingArtFragmentDirections.actionNavigationHomeToArtworkDetailFragment(it)
             )
         }
 

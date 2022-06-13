@@ -63,5 +63,17 @@
         <argument
             android:name="selectedArtwork"
             app:argType="com.example.example.ArtworkObject" />
+        <action
+            android:id="@+id/action_artworkDetailFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.android.aicartapp.ui.artworkLocation.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>
