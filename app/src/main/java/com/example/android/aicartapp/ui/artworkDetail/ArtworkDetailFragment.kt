@@ -37,9 +37,9 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
 //            loadUrl(artwork.getOtherImgUrl())
 //        }
 
-        binding.imageView2.setOnClickListener {
-            this.findNavController().navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment())
-        }
+    binding.imageView2.setOnClickListener {
+        this.findNavController().navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment(artwork))
+    }
 
 
         binding.fab.setOnClickListener {

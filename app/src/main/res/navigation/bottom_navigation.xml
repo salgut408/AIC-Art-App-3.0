@@ -75,5 +75,9 @@
         android:id="@+id/mapsFragment"
         android:name="com.example.android.aicartapp.ui.artworkLocation.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="mapsArtworkSelected"
+            app:argType="com.example.example.ArtworkObject" />
+    </fragment>
 </navigation>
