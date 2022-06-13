@@ -39,13 +39,13 @@ class MainArtViewModel(
     }
 
     fun getBreakingArt() = viewModelScope.launch {
-       safeBreakingArtCall()
+        safeBreakingArtCall()
 
     }
 
     fun searchArt(searchQuery: String) = viewModelScope.launch {
-      searchArt.postValue(Resource.Loading())
-        val response = artRepository.searchArt(FIELD_TERMS,searchQuery, searchArtPage)
+        searchArt.postValue(Resource.Loading())
+        val response = artRepository.searchArt(FIELD_TERMS, searchQuery, searchArtPage)
         searchArt.postValue(handleSearchArtResponse(response))
     }
 
@@ -53,7 +53,7 @@ class MainArtViewModel(
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 breakingArtPage++
-                if(breakingArtResponse == null) {
+                if (breakingArtResponse == null) {
                     breakingArtResponse = resultResponse
                 } else {
                     val oldArtworks = breakingArtResponse?.artworkObject
@@ -71,7 +71,7 @@ class MainArtViewModel(
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 searchArtPage++
-                if(searchArtResponse == null) {
+                if (searchArtResponse == null) {
 
                     searchArtResponse = resultResponse
                 } else {
@@ -79,8 +79,40 @@ class MainArtViewModel(
                     //TODO fix pagination calling clear...
 
                     val oldArtworks = searchArtResponse?.artworkObject
+
                     val newArtworks = resultResponse.artworkObject
 //                    oldArtworks?.addAll(0,newArtworks)
+
+
+                   val index = oldArtworks?.size
+oldArtworks?.addAll(newArtworks)
+
+
+
+
+                }
+                return Resource.Success(searchArtResponse ?: resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private fun handleNewSearchArtResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                searchArtPage++
+                if (searchArtResponse == null) {
+
+                    searchArtResponse = resultResponse
+                } else {
+
+                    //TODO fix pagination calling clear...
+
+                    val oldArtworks = searchArtResponse?.artworkObject
+
+                    val newArtworks = resultResponse.artworkObject
+//                    oldArtworks?.addAll(0,newArtworks)
+
 
                     oldArtworks?.clear()
                     oldArtworks?.addAll(newArtworks)
@@ -93,6 +125,11 @@ class MainArtViewModel(
         return Resource.Error(response.message())
     }
 
+
+
+
+
+
     fun saveArtwork(artwork: ArtworkObject) = viewModelScope.launch {
         artRepository.upsert(artwork)
     }
@@ -104,30 +141,30 @@ class MainArtViewModel(
     }
 
 
-private suspend fun safeBreakingArtCall() {
-    searchArt.postValue(Resource.Loading())
-    try {
-        if(hasInternetConnection()) {
-            val response = artRepository.getBreakingArt(FIELD_TERMS, breakingArtPage)
-            breakingArt.postValue(handleBreakingArtResponse(response))
-        } else {
-            searchArt.postValue(Resource.Error("No connection"))
-        }
+    private suspend fun safeBreakingArtCall() {
+        searchArt.postValue(Resource.Loading())
+        try {
+            if (hasInternetConnection()) {
+                val response = artRepository.getBreakingArt(FIELD_TERMS, breakingArtPage)
+                breakingArt.postValue(handleBreakingArtResponse(response))
+            } else {
+                searchArt.postValue(Resource.Error("No connection"))
+            }
 
 //
-    } catch (t: Throwable) {
-        when(t) {
-            is IOException -> breakingArt.postValue(Resource.Error("Network  error"))
-            else -> breakingArt.postValue(Resource.Error("Conversion error"))
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> breakingArt.postValue(Resource.Error("Network  error"))
+                else -> breakingArt.postValue(Resource.Error("Conversion error"))
+            }
         }
     }
-}
 
     private suspend fun safeSearchArtCall(searchQuery: String) {
         searchArt.postValue(Resource.Loading())
         try {
-            if(hasInternetConnection()) {
-                val response = artRepository.searchArt(FIELD_TERMS, searchQuery ,searchArtPage)
+            if (hasInternetConnection()) {
+                val response = artRepository.searchArt(FIELD_TERMS, searchQuery, searchArtPage)
                 searchArt.postValue(handleSearchArtResponse(response))
             } else {
                 searchArt.postValue(Resource.Error("No connection"))
@@ -135,7 +172,7 @@ private suspend fun safeBreakingArtCall() {
 
 
         } catch (t: Throwable) {
-            when(t) {
+            when (t) {
                 is IOException -> searchArt.postValue(Resource.Error("Network  error"))
                 else -> searchArt.postValue(Resource.Error("Conversion error"))
             }
@@ -143,16 +180,14 @@ private suspend fun safeBreakingArtCall() {
     }
 
 
-
-
-
     private fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<ArtApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val activeNetwork = connectivityManager.activeNetwork ?: return false
-            val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+            val capabilities =
+                connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
             return when {
                 capabilities.hasTransport(TRANSPORT_WIFI) -> true
                 capabilities.hasTransport(TRANSPORT_CELLULAR) -> true
@@ -161,17 +196,16 @@ private suspend fun safeBreakingArtCall() {
             }
         } else {
             connectivityManager.activeNetworkInfo?.run {
-                return when(type) {
+                return when (type) {
                     TYPE_WIFI -> return true
                     TYPE_MOBILE -> true
-                    TYPE_ETHERNET-> true
+                    TYPE_ETHERNET -> true
                     else -> false
                 }
             }
         }
         return false
     }
-
 
 
 }

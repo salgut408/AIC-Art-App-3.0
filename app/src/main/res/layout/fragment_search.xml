@@ -43,6 +43,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchArt"
         android:clickable="true"
+        app:startIconTint="@color/black"
         android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
