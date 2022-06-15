@@ -37,12 +37,12 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
 //            loadUrl(artwork.getOtherImgUrl())
 //        }
 
-    binding.imageView2.setOnClickListener {
+    binding.fabMap.setOnClickListener {
         this.findNavController().navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment(artwork))
     }
 
 
-        binding.fab.setOnClickListener {
+        binding.floatingActionButton.setOnClickListener {
             viewModel.saveArtwork(artwork)
             Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG ).show()
 

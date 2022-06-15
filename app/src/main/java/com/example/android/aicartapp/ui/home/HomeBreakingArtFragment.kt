@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.android.aicartapp.MainActivity
 import com.example.android.aicartapp.R
 import com.example.android.aicartapp.adapters.ArtAdapter
@@ -45,9 +47,7 @@ class HomeBreakingArtFragment : Fragment() {
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("selectedArtwork", it)
-            }
+
             this.findNavController().navigate(
                 HomeBreakingArtFragmentDirections.actionNavigationHomeToArtworkDetailFragment(it)
             )
@@ -136,6 +136,7 @@ class HomeBreakingArtFragment : Fragment() {
         binding.rvBreakingArt.apply {
             adapter = artAdapter
             layoutManager = LinearLayoutManager(activity)
+
             addOnScrollListener(this@HomeBreakingArtFragment.scrollListener)
         }
     }

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.aicartapp.MainActivity
@@ -164,7 +165,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         artAdapter = ArtAdapter()
         binding.rvSearchArt.apply {
             adapter = artAdapter
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = GridLayoutManager(activity,2)
 
             addOnScrollListener(this@SearchFragment.scrollListener)
         }
