@@ -1,6 +1,7 @@
 package com.example.android.aicartapp.di
 
 import android.app.Application
+import androidx.room.Room
 import com.example.android.aicartapp.db.ArtworkDatabase
 import com.example.android.aicartapp.repository.ArtRepository
 import com.example.android.aicartapp.ui.MainArtViewModel
@@ -13,5 +14,15 @@ val appModule = module {
     viewModel { MainArtViewModel(androidApplication(), get()) }
     single { ArtRepository(get(), get()) }
     single { ArtworkDatabase(androidContext()) }
+    single {get<ArtworkDatabase>().getArtworkDao()}
+
+
+//    single { Room.databaseBuilder(androidContext(), ArtworkDatabase::class.java, "artDB" )
+//        .fallbackToDestructiveMigration()
+//        .build()}
 }
+
+
+
+
 
