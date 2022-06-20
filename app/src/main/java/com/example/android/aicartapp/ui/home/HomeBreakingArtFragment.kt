@@ -43,8 +43,7 @@ class HomeBreakingArtFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        //binding = FragmentBreakingArtBinding.inflate(layoutInflater)
-//        viewModel = (activity as MainActivity).viewModel
+
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {

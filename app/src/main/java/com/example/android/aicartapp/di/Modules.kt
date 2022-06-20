@@ -11,6 +11,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     viewModel { MainArtViewModel(androidApplication(), get()) }
-    single { ArtRepository(get()) }
+    single { ArtRepository(get(), get()) }
     single { ArtworkDatabase(androidContext()) }
 }
+
