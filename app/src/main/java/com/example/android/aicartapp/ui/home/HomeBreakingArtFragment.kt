@@ -24,9 +24,10 @@ import com.example.android.aicartapp.ui.MainArtViewModel
 import com.example.android.aicartapp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.android.aicartapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_art.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeBreakingArtFragment : Fragment() {
-    lateinit var viewModel: MainArtViewModel
+    val viewModel: MainArtViewModel by viewModel<MainArtViewModel>()
     lateinit var artAdapter: ArtAdapter
     lateinit var binding: FragmentBreakingArtBinding
     val TAG = "BreakingArtHomeFragment"
@@ -43,7 +44,7 @@ class HomeBreakingArtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
         //binding = FragmentBreakingArtBinding.inflate(layoutInflater)
-        viewModel = (activity as MainActivity).viewModel
+//        viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {

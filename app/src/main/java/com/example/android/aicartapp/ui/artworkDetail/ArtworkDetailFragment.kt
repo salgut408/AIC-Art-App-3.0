@@ -14,9 +14,10 @@ import com.example.android.aicartapp.R
 import com.example.android.aicartapp.databinding.FragmentArtworkDetailBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
-    lateinit var viewModel: MainArtViewModel
+    val viewModel: MainArtViewModel by viewModel<MainArtViewModel>()
     lateinit var binding: FragmentArtworkDetailBinding
 
 
@@ -30,7 +31,6 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_artwork_detail) {
         binding.artwork = artwork
 
 
-        viewModel = (activity as MainActivity).viewModel
 //  in case back to webview instead of image view
 //        binding.webView.apply {
 //            webViewClient = WebViewClient()

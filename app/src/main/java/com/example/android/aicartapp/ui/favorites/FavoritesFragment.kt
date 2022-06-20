@@ -19,9 +19,10 @@ import com.example.android.aicartapp.databinding.FragmentSearchBinding
 import com.example.android.aicartapp.ui.MainArtViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoritesFragment : Fragment() {
-    lateinit var viewModel: MainArtViewModel
+    val viewModel: MainArtViewModel by viewModel<MainArtViewModel>()
     lateinit var binding: FragmentFavoritesBinding
     lateinit var artAdapter: ArtAdapter
 
@@ -38,7 +39,6 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
 
         setUpRecyclerView()
 // TODO Bundle is never used

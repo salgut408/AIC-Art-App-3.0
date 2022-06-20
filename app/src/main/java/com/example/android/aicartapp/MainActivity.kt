@@ -14,20 +14,16 @@ import com.example.android.aicartapp.databinding.ActivityArtBinding
 import com.example.android.aicartapp.db.ArtworkDatabase
 import com.example.android.aicartapp.repository.ArtRepository
 import com.example.android.aicartapp.ui.MainArtViewModel
-import com.example.android.aicartapp.ui.MainArtViewModelProviderFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityArtBinding
-    lateinit var viewModel: MainArtViewModel
+    val viewModel: MainArtViewModel by viewModel()
     lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val artRepository = ArtRepository(ArtworkDatabase(this))
-        val viewModelProviderFactory = MainArtViewModelProviderFactory(application, artRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainArtViewModel::class.java)
 
         binding = ActivityArtBinding.inflate(layoutInflater)
         setContentView(binding.root)
