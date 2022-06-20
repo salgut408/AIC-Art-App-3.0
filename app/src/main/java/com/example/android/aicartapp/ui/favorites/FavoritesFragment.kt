@@ -27,6 +27,7 @@ class FavoritesFragment : Fragment() {
     lateinit var artAdapter: ArtAdapter
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,9 +44,7 @@ class FavoritesFragment : Fragment() {
         setUpRecyclerView()
 // TODO Bundle is never used
         artAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("selectedArtwork", it)
-            }
+
             this.findNavController().navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(it)
             )
         }

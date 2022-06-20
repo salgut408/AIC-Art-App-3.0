@@ -7,4 +7,5 @@
     <string name="favorites">Favorites</string>
     <string name="image">Image</string>
     <string name="colorfulness_score">Colorfulness Score:</string>
+    <string name="notification_title">Artwork Notification!</string>
 </resources>
