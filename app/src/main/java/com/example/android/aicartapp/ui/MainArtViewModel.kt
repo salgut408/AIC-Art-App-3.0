@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android.aicartapp.ArtApplication
 import com.example.android.aicartapp.repository.ArtRepository
+import com.example.android.aicartapp.repository.CacheRepository
 import com.example.android.aicartapp.util.Constants.Companion.FIELD_TERMS
 import com.example.android.aicartapp.util.Resource
 import com.example.example.ArtResponse
@@ -21,7 +22,8 @@ import java.io.IOException
 
 class MainArtViewModel(
     app: Application,
-    val artRepository: ArtRepository
+    val artRepository: ArtRepository,
+
 ) : AndroidViewModel(app) {
 
     val breakingArt: MutableLiveData<Resource<ArtResponse>> = MutableLiveData()
@@ -33,6 +35,7 @@ class MainArtViewModel(
     var searchArtResponse: ArtResponse? = null
 
 
+
     init {
         getBreakingArt()
 
@@ -40,6 +43,7 @@ class MainArtViewModel(
 
     fun getBreakingArt() = viewModelScope.launch {
         safeBreakingArtCall()
+
 
     }
 
@@ -49,7 +53,7 @@ class MainArtViewModel(
         searchArt.postValue(handleSearchArtResponse(response))
     }
 
-    private fun handleBreakingArtResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
+    private suspend fun handleBreakingArtResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 breakingArtPage++
@@ -59,6 +63,8 @@ class MainArtViewModel(
                     val oldArtworks = breakingArtResponse?.artworkObject
                     val newArtworks = resultResponse.artworkObject
                     oldArtworks?.addAll(newArtworks)
+                    artRepository.insertAllCache(newArtworks)
+
                 }
                 return Resource.Success(breakingArtResponse ?: resultResponse)
             }

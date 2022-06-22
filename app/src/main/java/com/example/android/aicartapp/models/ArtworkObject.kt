@@ -12,6 +12,7 @@ import java.io.Serializable
 
 @Entity(
   tableName = "artworks"
+
 )
 @Parcelize
  data class ArtworkObject (

@@ -30,4 +30,16 @@ interface ArtAPI {
 //            @Query("limit")
 //            limitNo: Int = 50
     ): Response<ArtResponse>
+
+    @GET("artworks/search")
+    suspend fun searchForArtStyleType(
+        @Query("fields")
+        fieldTerms: String,
+        @Query("q")
+        searchTerm: String,
+        @Query("page")
+        pageNumber: Int = 1
+//            @Query("limit")
+//            limitNo: Int = 50
+    ): Response<ArtResponse>
 }
