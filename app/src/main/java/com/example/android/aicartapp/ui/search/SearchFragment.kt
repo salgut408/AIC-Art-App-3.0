@@ -165,7 +165,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         artAdapter = ArtAdapter()
         binding.rvSearchArt.apply {
             adapter = artAdapter
-            layoutManager = GridLayoutManager(activity,2)
+            layoutManager = LinearLayoutManager(activity)
 
             addOnScrollListener(this@SearchFragment.scrollListener)
         }

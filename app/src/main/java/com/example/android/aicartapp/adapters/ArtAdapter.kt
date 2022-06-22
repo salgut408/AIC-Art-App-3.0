@@ -46,6 +46,8 @@ inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(ite
         holder.itemView.apply {
             Glide.with(this).load(artwork.getOtherImgUrl()).into(imageView)
             textView2.text=artwork.artistDisplay
+            artistNameDisplay.text=artwork.title
+
 
 
             setOnClickListener {
