@@ -47,8 +47,8 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/artistTitle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
@@ -56,7 +56,7 @@
                     android:lines="1"
                     android:text="@{artwork.artistDisplay}"
                     android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent"
@@ -64,16 +64,16 @@
 
                 <TextView
                     android:id="@+id/artistNameDisplay"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
+                    android:fontFamily="serif"
                     android:text="@{artwork.styleTitle}"
                     android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/artistTitle"
                     tools:text="Display text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

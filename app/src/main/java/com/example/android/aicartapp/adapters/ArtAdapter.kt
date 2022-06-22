@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.aicartapp.R
 import com.example.example.ArtworkObject
-import kotlinx.android.synthetic.main.item_artwork_preview.view.*
 import kotlinx.android.synthetic.main.item_prev_new.view.*
 
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
@@ -45,7 +44,7 @@ inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(ite
         val artwork = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(artwork.getOtherImgUrl()).into(imageView)
-            textView2.text=artwork.artistDisplay
+            artistTitle.text=artwork.artistDisplay
             artistNameDisplay.text=artwork.title
 
 
