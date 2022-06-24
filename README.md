@@ -9,10 +9,20 @@ Also shows location of artwork if it is on display.
 
 
 
-### Dependencies
+## Using
 
-
-
+  ### Data Binding
+  ### Lifecycles
+  ### LiveData
+  ### Navigation
+  ### Room
+  ### MVVM
+  ### Glide
+  ### Kotlin Coroutines
+  ### Koin for dependency injection
+  ### Retrofit
+  ### Gson
+  ### Art Institute of Chciago API 
 
 
 
