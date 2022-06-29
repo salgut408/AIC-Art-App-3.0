@@ -1,6 +1,8 @@
 package com.example.android.aicartapp
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -55,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         return navController.navigateUp()
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.options_menu, menu)
+        return true
     }
 
 }
