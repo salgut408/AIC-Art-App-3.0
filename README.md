@@ -7,6 +7,8 @@ App to view artworks
 An app to view artworks, create favorite art list, search for artworks with keywords in meta data.
 Also shows location of artwork if it is on display.
 
+3rd iteration of an app using the AIC API.
+
 
 
 ## Using
