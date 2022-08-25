@@ -25,6 +25,7 @@ Also shows location of artwork if it is on display.
   ### Retrofit
   ### Gson
   ### Art Institute of Chciago API 
+  ### Google Maps API
   This uses the AIC API to show pictures on the screen. See the AIC API Documentation for instructions.
 
 
