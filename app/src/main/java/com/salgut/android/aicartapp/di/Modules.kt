@@ -19,9 +19,6 @@ val appModule = module {
     single { CacheRepository(get(), get()) }
 
 
-//    single { Room.databaseBuilder(androidContext(), ArtworkDatabase::class.java, "artDB" )
-//        .fallbackToDestructiveMigration()
-//        .build()}
 }
 
 

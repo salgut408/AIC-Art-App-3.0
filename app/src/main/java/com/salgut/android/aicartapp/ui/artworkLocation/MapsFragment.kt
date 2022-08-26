@@ -16,9 +16,9 @@ import com.salgut.android.aicartapp.databinding.FragmentMapsBinding
 class MapsFragment : Fragment() {
     lateinit var binding: FragmentMapsBinding
     val options = GoogleMapOptions()
-     val args: MapsFragmentArgs by navArgs()
-      var lat: Double =0.0
-      var long: Double=0.0
+    val args: MapsFragmentArgs by navArgs()
+    var lat: Double = 0.0
+    var long: Double = 0.0
     private val callback = OnMapReadyCallback { googleMap ->
 
         val location = LatLng(lat, long)
@@ -30,7 +30,7 @@ class MapsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater)
         return binding.root
@@ -45,7 +45,6 @@ class MapsFragment : Fragment() {
         long = art.longitude?.toDouble()!!
         val mapFragment = childFragmentManager.findFragmentById(this.id) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
 
 
     }

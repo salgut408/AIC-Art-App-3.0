@@ -10,7 +10,7 @@ import com.salgut.android.aicartapp.models.ArtworkObject
     entities = [ArtworkObject::class],
     version =2, exportSchema = false
 )
-//can move to singleton ...
+
 abstract class ArtworkDatabase : RoomDatabase() {
     abstract fun getArtworkDao(): ArtworkDao
     companion object {

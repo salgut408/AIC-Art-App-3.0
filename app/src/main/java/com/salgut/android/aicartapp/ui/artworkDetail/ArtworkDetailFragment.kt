@@ -20,35 +20,26 @@ class ArtworkDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentArtworkDetailBinding.inflate(inflater)
         val artwork = ArtworkDetailFragmentArgs.fromBundle(requireArguments()).selectedArtwork
         binding.artwork = artwork
         binding.artwork
-
-
-
-
-    binding.fabMap.setOnClickListener {
-        this.findNavController().navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment(artwork))
-    }
-
+        binding.fabMap.setOnClickListener {
+            this.findNavController()
+                .navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment(
+                    artwork))
+        }
 
         binding.floatingActionButton.setOnClickListener {
             viewModel.saveArtwork(artwork)
-            Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG ).show()
+            Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG).show()
 
         }
         return binding.root
 
-
     }
-
-
-
-
-
 
 }
 

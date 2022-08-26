@@ -13,8 +13,7 @@ interface ArtAPI {
         fieldTerms: String,
         @Query("page")
         pageNumber: Int = 1
-//            @Query("limit")
-//            limitNo: Int = 50
+
     ): Response<ArtResponse>
 
     @GET("artworks/search")
@@ -25,8 +24,7 @@ interface ArtAPI {
         searchTerm: String,
         @Query("page")
         pageNumber: Int = 1
-//            @Query("limit")
-//            limitNo: Int = 50
+
     ): Response<ArtResponse>
 
     @GET("artworks/search")
@@ -37,7 +35,6 @@ interface ArtAPI {
         searchTerm: String,
         @Query("page")
         pageNumber: Int = 1
-//            @Query("limit")
-//            limitNo: Int = 50
+
     ): Response<ArtResponse>
 }

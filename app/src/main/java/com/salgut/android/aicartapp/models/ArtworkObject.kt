@@ -6,8 +6,6 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-//@Parcelize
-// extend parcelable when ready to parcelize
 
 @Entity(
   tableName = "artworks"
@@ -39,10 +37,7 @@ import kotlinx.android.parcel.Parcelize
 
 {
 
-  fun getArtImageUrl(): String {
-    val artUrlToDisplay = "https://www.artic.edu/iiif/2/" + imageId + "/full/843,/0/default.jpg"
-    return artUrlToDisplay
-  }
+
   fun getOtherImgUrl(): String {
     val urlForDisplay = "https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg"
     return urlForDisplay

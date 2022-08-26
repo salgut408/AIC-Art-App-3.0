@@ -36,7 +36,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSearchBinding.inflate(layoutInflater)
         return binding.root
@@ -50,9 +50,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {
-//            val bundle = Bundle().apply {
-//                putParcelable("artwork", it)
-//            }
+
             this.findNavController().navigate(
                 SearchFragmentDirections.actionNavigationSearchToArtworkDetailFragment(it)
             )
@@ -61,8 +59,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         // delay on search request & TextChangedListener on search
         var job: Job? = null
 
-        // TODO add focus change listener
-//        binding.textInputEditText.setOnFocusChangeListener()
 
         binding.textInputEditText.addTextChangedListener { editable ->
             job?.cancel()
@@ -87,8 +83,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                         val totalPages =
                             artResponse.pagination!!.total!! / Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.searchArtPage == totalPages
-                        if(isLastPage){
-                            binding.rvSearchArt.setPadding(0,0,0,0)
+                        if (isLastPage) {
+                            binding.rvSearchArt.setPadding(0, 0, 0, 0)
                         }
                     }
                 }
@@ -116,8 +112,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
     }
-
-
 
 
     var isLoading = false
@@ -166,10 +160,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             addOnScrollListener(this@SearchFragment.scrollListener)
         }
     }
-    // TODO hide keyboard
-//    private fun hideKeyboard(){
-//
-//    }
 
 
 }

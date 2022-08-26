@@ -24,7 +24,7 @@ class MainArtViewModel(
     app: Application,
     val artRepository: ArtRepository,
 
-) : AndroidViewModel(app) {
+    ) : AndroidViewModel(app) {
 
     val breakingArt: MutableLiveData<Resource<ArtResponse>> = MutableLiveData()
     var breakingArtPage = 1
@@ -33,7 +33,6 @@ class MainArtViewModel(
     val searchArt: MutableLiveData<Resource<ArtResponse>> = MutableLiveData()
     var searchArtPage = 1
     var searchArtResponse: ArtResponse? = null
-
 
 
     init {
@@ -90,10 +89,8 @@ class MainArtViewModel(
 //                    oldArtworks?.addAll(0,newArtworks)
 
 
-                   val index = oldArtworks?.size
-oldArtworks?.addAll(newArtworks)
-
-
+                    val index = oldArtworks?.size
+                    oldArtworks?.addAll(newArtworks)
 
 
                 }
@@ -112,12 +109,11 @@ oldArtworks?.addAll(newArtworks)
                     searchArtResponse = resultResponse
                 } else {
 
-                    //TODO fix pagination calling clear...
 
                     val oldArtworks = searchArtResponse?.artworkObject
 
                     val newArtworks = resultResponse.artworkObject
-//                    oldArtworks?.addAll(0,newArtworks)
+
 
 
                     oldArtworks?.clear()
@@ -130,10 +126,6 @@ oldArtworks?.addAll(newArtworks)
         }
         return Resource.Error(response.message())
     }
-
-
-
-
 
 
     fun saveArtwork(artwork: ArtworkObject) = viewModelScope.launch {
@@ -157,7 +149,6 @@ oldArtworks?.addAll(newArtworks)
                 searchArt.postValue(Resource.Error("No connection"))
             }
 
-//
         } catch (t: Throwable) {
             when (t) {
                 is IOException -> breakingArt.postValue(Resource.Error("Network  error"))
@@ -175,7 +166,6 @@ oldArtworks?.addAll(newArtworks)
             } else {
                 searchArt.postValue(Resource.Error("No connection"))
             }
-
 
         } catch (t: Throwable) {
             when (t) {

@@ -12,7 +12,6 @@ import com.salgut.android.aicartapp.models.ArtworkObject
 import kotlinx.android.synthetic.main.item_prev_new.view.*
 
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
-//        inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     private val differCallback = object : DiffUtil.ItemCallback<ArtworkObject>() {

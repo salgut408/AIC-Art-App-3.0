@@ -23,26 +23,26 @@ class FavoritesFragment : Fragment() {
     lateinit var artAdapter: ArtAdapter
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
-// TODO Bundle is never used
         artAdapter.setOnItemClickListener {
 
-            this.findNavController().navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(it)
-            )
+            this.findNavController()
+                .navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(
+                    it)
+                )
         }
 
 
@@ -53,7 +53,7 @@ class FavoritesFragment : Fragment() {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                target: RecyclerView.ViewHolder,
             ): Boolean {
                 return true
             }
@@ -62,10 +62,10 @@ class FavoritesFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val artwork = artAdapter.differ.currentList[position]
                 viewModel.deleteArt(artwork)
-                Snackbar.make(binding.root, "deleted Artwork", Snackbar.LENGTH_LONG ).apply {
+                Snackbar.make(binding.root, "deleted Artwork", Snackbar.LENGTH_LONG).apply {
                     setAction("undo") {
                         viewModel.saveArtwork(artwork)
-                }
+                    }
                     show()
                 }
             }
@@ -84,7 +84,7 @@ class FavoritesFragment : Fragment() {
 
     }
 
-    private fun setUpRecyclerView( ) {
+    private fun setUpRecyclerView() {
         artAdapter = ArtAdapter()
         binding.rvSavedArt.apply {
             adapter = artAdapter
