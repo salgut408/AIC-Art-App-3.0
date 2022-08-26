@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.android.aicartapp.ui.home.HomeBreakingArtFragment"
+        android:name="com.salgut.android.aicartapp.ui.home.HomeBreakingArtFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_breaking_art" >
         <action
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.android.aicartapp.ui.search.SearchFragment"
+        android:name="com.salgut.android.aicartapp.ui.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.android.aicartapp.ui.favorites.FavoritesFragment"
+        android:name="com.salgut.android.aicartapp.ui.favorites.FavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -57,12 +57,12 @@
     </fragment>
     <fragment
         android:id="@+id/artworkDetailFragment"
-        android:name="com.example.android.aicartapp.ui.artworkDetail.ArtworkDetailFragment"
+        android:name="com.salgut.android.aicartapp.ui.artworkDetail.ArtworkDetailFragment"
         android:label="fragment_artwork_detail"
         tools:layout="@layout/fragment_artwork_detail" >
         <argument
             android:name="selectedArtwork"
-            app:argType="com.example.example.ArtworkObject" />
+            app:argType="com.salgut.android.aicartapp.models.ArtworkObject" />
         <action
             android:id="@+id/action_artworkDetailFragment_to_mapsFragment"
             app:destination="@id/mapsFragment"
@@ -73,11 +73,11 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.example.android.aicartapp.ui.artworkLocation.MapsFragment"
+        android:name="com.salgut.android.aicartapp.ui.artworkLocation.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" >
         <argument
             android:name="mapsArtworkSelected"
-            app:argType="com.example.example.ArtworkObject" />
+            app:argType="com.salgut.android.aicartapp.models.ArtworkObject" />
     </fragment>
 </navigation>
