@@ -11,7 +11,7 @@ class ArtRepository(
 ) {
 
     suspend fun getBreakingArt(fieldTerms: String, pageNumber: Int) =
-        apiService.getBreakingArt(fieldTerms, pageNumber)
+        apiService.getAllArt(fieldTerms, pageNumber)
 
     suspend fun insertAllCache(artwork: List<ArtworkObject>) =
         cacheRep.db.getCacheDao().insertAll(artwork)

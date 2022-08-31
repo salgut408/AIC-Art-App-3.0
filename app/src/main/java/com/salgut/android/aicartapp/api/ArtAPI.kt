@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface ArtAPI {
 
     @GET("artworks/search")
-    suspend fun getBreakingArt(
+    suspend fun getAllArt(
         @Query("fields")
         fieldTerms: String,
         @Query("page")
