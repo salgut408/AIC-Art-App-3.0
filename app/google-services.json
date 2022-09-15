@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "830427110410",
+    "project_id": "artapp-c6ecc",
+    "storage_bucket": "artapp-c6ecc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830427110410:android:ae57e8faf623484bf8d3f3",
+        "android_client_info": {
+          "package_name": "com.salgut.android.aicartapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830427110410-lv4svr1f4f53p4ks51cu1d88a09u0nka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8owF9dQXvTup0XbWN_vJURpaI8IXU7w0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830427110410-lv4svr1f4f53p4ks51cu1d88a09u0nka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
