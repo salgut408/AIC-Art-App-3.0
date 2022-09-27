@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/artworkDetailFragment"
         android:name="com.salgut.android.aicartapp.ui.artworkDetail.ArtworkDetailFragment"
-        android:label="fragment_artwork_detail"
+        android:label="Artwork Details"
         tools:layout="@layout/fragment_artwork_detail" >
         <argument
             android:name="selectedArtwork"
@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.salgut.android.aicartapp.ui.artworkLocation.MapsFragment"
-        android:label="fragment_maps"
+        android:label="Artwork Location"
         tools:layout="@layout/fragment_maps" >
         <argument
             android:name="mapsArtworkSelected"

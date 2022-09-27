@@ -2,6 +2,10 @@ package com.salgut.android.aicartapp.ui
 
 import android.app.Application
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.*
 import android.net.NetworkCapabilities.*
@@ -9,6 +13,7 @@ import android.os.Build
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.palette.graphics.Palette
 import com.salgut.android.aicartapp.ArtApplication
 import com.salgut.android.aicartapp.models.ArtResponse
 import com.salgut.android.aicartapp.models.ArtworkObject
@@ -137,6 +142,18 @@ class MainArtViewModel(
     fun deleteArt(artwork: ArtworkObject) = viewModelScope.launch {
         artRepository.deleteArtwork(artwork)
     }
+
+//    fun calcDominantColor (drawable: Drawable, onFinish: (Color)->Unit){
+//        val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
+//
+//        Palette.from(bmp).generate() {palette ->
+//            palette?.dominantSwatch?.rgb?.let { colorValue ->
+//                onFinish(Color(colorValue))
+//            }
+//        }
+//    }
+
+
 
 
     private suspend fun safeBreakingArtCall() {
