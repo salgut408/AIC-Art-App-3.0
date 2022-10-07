@@ -1,5 +1,6 @@
 package com.salgut.android.aicartapp.ui
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,6 +11,7 @@ import android.net.ConnectivityManager
 import android.net.ConnectivityManager.*
 import android.net.NetworkCapabilities.*
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -143,16 +145,21 @@ class MainArtViewModel(
         artRepository.deleteArtwork(artwork)
     }
 
-//    fun calcDominantColor (drawable: Drawable, onFinish: (Color)->Unit){
-//        val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
-//
-//        Palette.from(bmp).generate() {palette ->
-//            palette?.dominantSwatch?.rgb?.let { colorValue ->
-//                onFinish(Color(colorValue))
-//            }
-//        }
-//    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun calcDominantColor (drawable: Drawable, onFinish: (Color)->Unit){
+        val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
 
+        Palette.from(bmp).generate() {palette ->
+            palette?.dominantSwatch?.rgb?.let { colorValue ->
+                onFinish(Color.valueOf(colorValue))
+
+            }
+        }
+    }
+
+    fun fetchColors() {
+
+    }
 
 
 
@@ -193,6 +200,7 @@ class MainArtViewModel(
     }
 
 
+    @SuppressLint("MissingPermission")
     private fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<ArtApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE
