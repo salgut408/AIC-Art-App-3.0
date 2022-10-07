@@ -16,6 +16,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.palette.graphics.Palette
+import com.bumptech.glide.GlideBuilder
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.request.RequestOptions
 import com.salgut.android.aicartapp.ArtApplication
 import com.salgut.android.aicartapp.models.ArtResponse
 import com.salgut.android.aicartapp.models.ArtworkObject
@@ -157,9 +160,11 @@ class MainArtViewModel(
         }
     }
 
-    fun fetchColors() {
-
-    }
+//    fun fetchColors(url: String, context: Context, onCalculated: (Color)->Unit) {
+//        viewModelScope.launch {
+//          calcDominantColor()
+//        }
+//    }
 
 
 
