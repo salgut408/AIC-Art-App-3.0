@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_search, R.id.navigation_favorites
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//        navView.setupWithNavController(navController)
+        setSupportActionBar(binding.myToolbar)
 
 
     }
