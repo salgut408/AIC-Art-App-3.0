@@ -20,6 +20,7 @@ import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.salgut.android.aicartapp.ui.MainArtViewModel
@@ -84,6 +85,7 @@ class ArtworkDetailFragment : Fragment() {
             try {
                 Glide.with(requireActivity())
                     .load(it.getOtherImgUrl())
+                    .fitCenter()
                     .listener(object: RequestListener<Drawable> {
                         override fun onLoadFailed(
                             e: GlideException?,
@@ -116,11 +118,19 @@ class ArtworkDetailFragment : Fragment() {
 
                                     binding.artistNameDisplay.setTextColor(textColor)
                                     binding.scrollView.setBackgroundColor(intColorDarkVibrant)
+                                    binding.classificationTitle.setTextColor(textColor)
+                                    binding.colorfullScoreNumber.setTextColor(textColor)
+                                    binding.credLine.setTextColor(textColor)
+                                    binding.colorfulnessScore.setTextColor(textColor)
+                                    binding.placeOfOrigin.setTextColor(textColor)
+                                    binding.styleTitle.setTextColor(textColor)
+
                                 })
                             }
                             return false
                         }
                     })
+                    .transition(withCrossFade())
                     .into(binding.deatilImageView)
             } catch (e: IOException) {
                 e.printStackTrace()
