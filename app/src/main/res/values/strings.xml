@@ -9,4 +9,5 @@
     <string name="colorfulness_score">Colorfulness Score:</string>
     <string name="notification_title">Artwork Notification!</string>
     <string name="guess_the_artist_name_game">Guess the artist name Game</string>
+    <string name="art_augmented_reality">Art Augmented Reality</string>
 </resources>

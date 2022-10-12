@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/guess_the_artist_name_game" />
+    <item android:title="@string/art_augmented_reality" />
 
 </menu>
