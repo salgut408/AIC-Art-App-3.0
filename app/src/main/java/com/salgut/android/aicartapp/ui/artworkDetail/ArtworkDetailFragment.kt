@@ -1,6 +1,8 @@
 package com.salgut.android.aicartapp.ui.artworkDetail
 
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -102,10 +104,18 @@ class ArtworkDetailFragment : Fragment() {
                         ): Boolean {
                             resource.let{
                                 Palette.from(resource!!.toBitmap()).generate(fun(palette: Palette?){
-                                    val intColorTitle = palette?.dominantSwatch?.rgb ?: 0
-                                    binding.artTitle.setTextColor(intColorTitle)
-                                    val intColorArtistDiaplay = palette?.vibrantSwatch?.rgb ?: 0
-                                    binding.artistNameDisplay.setTextColor(intColorArtistDiaplay)
+                                    val intColorVibrant = palette?.vibrantSwatch?.rgb ?: Color.BLACK
+                                    val intColorDarkVibrant = palette?.darkVibrantSwatch?.rgb ?: Color.LTGRAY
+                                    val titleColor = palette?.dominantSwatch?.titleTextColor ?: Color.BLACK
+                                    val textColor = palette?.dominantSwatch?.bodyTextColor ?: Color.BLACK
+
+                                    binding.artTitle.setTextColor(titleColor)
+
+                                    binding.floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(intColorVibrant))
+                                    binding.fabMap.setBackgroundTintList(ColorStateList.valueOf(intColorVibrant))
+
+                                    binding.artistNameDisplay.setTextColor(textColor)
+                                    binding.scrollView.setBackgroundColor(intColorDarkVibrant)
                                 })
                             }
                             return false
