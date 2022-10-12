@@ -64,14 +64,14 @@
 
                 <TextView
                     android:id="@+id/artistNameDisplay"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="217dp"
+                    android:layout_height="89dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="serif"
                     android:text="@{artwork.styleTitle}"
                     android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/artistTitle"
                     tools:text="Display text" />

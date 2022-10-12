@@ -7,19 +7,23 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.media.Image
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.*
 import android.net.NetworkCapabilities.*
 import android.os.Build
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.palette.graphics.Palette
+import com.bumptech.glide.Glide
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.request.RequestOptions
 import com.salgut.android.aicartapp.ArtApplication
+import com.salgut.android.aicartapp.databinding.ActivityArtBinding
 import com.salgut.android.aicartapp.models.ArtResponse
 import com.salgut.android.aicartapp.models.ArtworkObject
 import com.salgut.android.aicartapp.repository.ArtRepository
@@ -148,23 +152,31 @@ class MainArtViewModel(
         artRepository.deleteArtwork(artwork)
     }
 
+    fun createPaletteSync(bitmap: Bitmap): Palette = Palette.from(bitmap).generate()
+
     @RequiresApi(Build.VERSION_CODES.O)
-    fun calcDominantColor (drawable: Drawable, onFinish: (Color)->Unit){
-        val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
+    fun calcDominantColor (drawable: Drawable) {
+        viewModelScope.launch {
+            val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
 
-        Palette.from(bmp).generate() {palette ->
-            palette?.dominantSwatch?.rgb?.let { colorValue ->
-                onFinish(Color.valueOf(colorValue))
-
+            Palette.from(bmp).generate() {palette->
+                palette?.dominantSwatch?.rgb?.toInt()
             }
         }
+
     }
 
-//    fun fetchColors(url: String, context: Context, onCalculated: (Color)->Unit) {
-//        viewModelScope.launch {
-//          calcDominantColor()
-//        }
-//    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -34,7 +34,7 @@
 
             <ImageView
                 android:id="@+id/deatilImageView"
-                pictureUrl="@{artwork.otherImgUrl}"
+
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:contentDescription="@string/image"
