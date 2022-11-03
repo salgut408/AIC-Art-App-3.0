@@ -39,9 +39,6 @@ class ArtworkDetailFragment : Fragment() {
         binding = FragmentArtworkDetailBinding.inflate(inflater)
         val artwork = ArtworkDetailFragmentArgs.fromBundle(requireArguments()).selectedArtwork
         binding.artwork = artwork
-        binding.artwork
-
-
 
         binding.fabMap.setOnClickListener {
             this.findNavController()
@@ -50,18 +47,10 @@ class ArtworkDetailFragment : Fragment() {
         }
 
 
-
-
-
-
         binding.floatingActionButton.setOnClickListener {
             viewModel.saveArtwork(artwork)
             Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG).show()
-
         }
-
-//        createPaletteAsync()
-
 
         return binding.root
 

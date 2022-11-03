@@ -37,8 +37,8 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
-        artAdapter.setOnItemClickListener {
 
+        artAdapter.setOnItemClickListener {
             this.findNavController()
                 .navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(
                     it)

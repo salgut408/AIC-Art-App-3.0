@@ -36,7 +36,7 @@ import java.io.IOException
 
 class MainArtViewModel(
     app: Application,
-    val artRepository: ArtRepository,
+    private val artRepository: ArtRepository,
 
     ) : AndroidViewModel(app) {
 
@@ -51,13 +51,10 @@ class MainArtViewModel(
 
     init {
         getBreakingArt()
-
     }
 
     fun getBreakingArt() = viewModelScope.launch {
         safeBreakingArtCall()
-
-
     }
 
     fun searchArt(searchQuery: String) = viewModelScope.launch {
@@ -65,6 +62,8 @@ class MainArtViewModel(
         val response = artRepository.searchArt(FIELD_TERMS, searchQuery, searchArtPage)
         searchArt.postValue(handleSearchArtResponse(response))
     }
+
+    //TODO move repository or mapper
 
     private suspend fun handleBreakingArtResponse(response: Response<ArtResponse>): Resource<ArtResponse> {
         if (response.isSuccessful) {
@@ -100,13 +99,9 @@ class MainArtViewModel(
                     val oldArtworks = searchArtResponse?.artworkObject
 
                     val newArtworks = resultResponse.artworkObject
-//                    oldArtworks?.addAll(0,newArtworks)
-
 
                     val index = oldArtworks?.size
                     oldArtworks?.addAll(newArtworks)
-
-
                 }
                 return Resource.Success(searchArtResponse ?: resultResponse)
             }
@@ -123,17 +118,12 @@ class MainArtViewModel(
                     searchArtResponse = resultResponse
                 } else {
 
-
                     val oldArtworks = searchArtResponse?.artworkObject
 
                     val newArtworks = resultResponse.artworkObject
 
-
-
                     oldArtworks?.clear()
                     oldArtworks?.addAll(newArtworks)
-
-
                 }
                 return Resource.Success(searchArtResponse ?: resultResponse)
             }
@@ -151,31 +141,6 @@ class MainArtViewModel(
     fun deleteArt(artwork: ArtworkObject) = viewModelScope.launch {
         artRepository.deleteArtwork(artwork)
     }
-
-    fun createPaletteSync(bitmap: Bitmap): Palette = Palette.from(bitmap).generate()
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun calcDominantColor (drawable: Drawable) {
-        viewModelScope.launch {
-            val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
-
-            Palette.from(bmp).generate() {palette->
-                palette?.dominantSwatch?.rgb?.toInt()
-            }
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

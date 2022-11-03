@@ -25,9 +25,10 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
-    lateinit var viewModel: MainArtViewModel
+     val viewModel by viewModel<MainArtViewModel>()
     lateinit var artAdapter: ArtAdapter
     val TAG = "SearchArtFragment"
     lateinit var binding: FragmentSearchBinding
@@ -46,7 +47,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {

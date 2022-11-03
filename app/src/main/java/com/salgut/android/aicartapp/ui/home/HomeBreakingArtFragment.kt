@@ -40,7 +40,6 @@ class HomeBreakingArtFragment : Fragment() {
         setUpRecyclerView()
 
         artAdapter.setOnItemClickListener {
-
             this.findNavController().navigate(
                 HomeBreakingArtFragmentDirections.actionNavigationHomeToArtworkDetailFragment(it)
             )
