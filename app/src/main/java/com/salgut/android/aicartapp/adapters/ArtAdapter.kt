@@ -31,8 +31,6 @@ import kotlinx.android.synthetic.main.item_prev_new.view.artistNameDisplay
 class ArtAdapter : RecyclerView.Adapter<ArtAdapter.ArtworkObjectViewHolder>() {
 inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    var dominantColor: Int = 0
-
     private val differCallback = object : DiffUtil.ItemCallback<ArtworkObject>() {
         override fun areItemsTheSame(oldItem: ArtworkObject, newItem: ArtworkObject): Boolean {
             return oldItem.id == newItem.id
@@ -62,33 +60,18 @@ inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(ite
         val artwork = differ.currentList[position]
         holder.itemView.apply {
 
-            var url = artwork.getOtherImgUrl()
+            val url = artwork.getOtherImgUrl()
 
             Glide.with(this)
                 .asBitmap()
-
-
                 .load(url)
-
-
-
-
                 .into(imageView)
-
             artistTitle.text=artwork.artistDisplay
             artistNameDisplay.text=artwork.title
-
-
-
-
-
-
 
             setOnClickListener {
                 onItemClickListener?.let { it(artwork) }
             }
-
-
         }
     }
 
@@ -97,19 +80,6 @@ inner class ArtworkObjectViewHolder(itemView: View): RecyclerView.ViewHolder(ite
     fun setOnItemClickListener(listener: (ArtworkObject) -> Unit) {
         onItemClickListener = listener
     }
-
-
-
-    fun getDomColor(drawable: Drawable, binding: TextView) {
-        val bmp = (drawable as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        Palette.from(bmp).generate {palette ->
-
-            palette?.dominantSwatch?.rgb?.toInt()
-                ?.let { binding.setTextColor(it) }
-        }
-    }
-
-
 }
 
 
