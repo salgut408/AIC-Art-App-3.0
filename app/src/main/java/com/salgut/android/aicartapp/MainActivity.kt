@@ -29,26 +29,17 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityArtBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController: NavController = navHostFragment.navController
-
         val navView: BottomNavigationView = binding.navView
-
          appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_search, R.id.navigation_favorites
             )
         )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
         setSupportActionBar(binding.myToolbar)
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -62,5 +53,4 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.options_menu, menu)
         return true
     }
-
 }

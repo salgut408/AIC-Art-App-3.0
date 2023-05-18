@@ -37,7 +37,6 @@ class ArtworkDetailFragment : Fragment() {
     lateinit var binding: FragmentArtworkDetailBinding
     lateinit var artworkThing: ArtworkObject
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,31 +47,18 @@ class ArtworkDetailFragment : Fragment() {
         binding.artwork = artwork
         binding.artwork
 
-
-
         binding.fabMap.setOnClickListener {
             this.findNavController()
                 .navigate(ArtworkDetailFragmentDirections.actionArtworkDetailFragmentToMapsFragment(
                     artwork))
         }
 
-
-
-
-
-
         binding.floatingActionButton.setOnClickListener {
             viewModel.saveArtwork(artwork)
             Snackbar.make(binding.root, "Saved Artwork", Snackbar.LENGTH_LONG).show()
-
         }
 
-//        createPaletteAsync()
-
-
         return binding.root
-
-
     }
 
 
@@ -81,19 +67,19 @@ class ArtworkDetailFragment : Fragment() {
         val args = ArtworkDetailFragmentArgs.fromBundle(requireArguments()).selectedArtwork
         artworkThing = args
 
-        args.let{
+        args.let {
             try {
                 Glide.with(requireActivity())
                     .load(it.getOtherImgUrl())
                     .fitCenter()
-                    .listener(object: RequestListener<Drawable> {
+                    .listener(object : RequestListener<Drawable> {
                         override fun onLoadFailed(
                             e: GlideException?,
                             model: Any?,
                             target: Target<Drawable>?,
-                            isFirstResource: Boolean
+                            isFirstResource: Boolean,
                         ): Boolean {
-                            Log.e("TAG","ERROR loading Image",e)
+                            Log.e("TAG", "ERROR loading Image", e)
                             return false
                         }
 
@@ -102,44 +88,49 @@ class ArtworkDetailFragment : Fragment() {
                             model: Any?,
                             target: Target<Drawable>?,
                             dataSource: DataSource?,
-                            isFirstResource: Boolean
+                            isFirstResource: Boolean,
                         ): Boolean {
-                            resource.let{
-                                Palette.from(resource!!.toBitmap()).generate(fun(palette: Palette?){
-                                    val intColorVibrant = palette?.vibrantSwatch?.rgb ?: Color.BLACK
-                                    val intColorDarkVibrant = palette?.darkVibrantSwatch?.rgb ?: Color.LTGRAY
-                                    val titleColor = palette?.dominantSwatch?.titleTextColor ?: Color.BLACK
-                                    val textColor = palette?.dominantSwatch?.bodyTextColor ?: Color.BLACK
+                            resource.let {
+                                Palette.from(resource!!.toBitmap())
+                                    .generate(fun(palette: Palette?) {
+                                        val intColorVibrant =
+                                            palette?.vibrantSwatch?.rgb ?: Color.BLACK
+                                        val intColorDarkVibrant =
+                                            palette?.darkVibrantSwatch?.rgb ?: Color.LTGRAY
+                                        val titleColor =
+                                            palette?.dominantSwatch?.titleTextColor ?: Color.BLACK
+                                        val textColor =
+                                            palette?.dominantSwatch?.bodyTextColor ?: Color.BLACK
 
-                                    binding.artTitle.setTextColor(titleColor)
+                                        binding.artTitle.setTextColor(titleColor)
 
-                                    binding.floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(intColorVibrant))
-                                    binding.fabMap.setBackgroundTintList(ColorStateList.valueOf(intColorVibrant))
+                                        binding.floatingActionButton.setBackgroundTintList(
+                                            ColorStateList.valueOf(intColorVibrant))
+                                        binding.fabMap.setBackgroundTintList(ColorStateList.valueOf(
+                                            intColorVibrant))
 
-                                    binding.artistNameDisplay.setTextColor(textColor)
-                                    binding.scrollView.setBackgroundColor(intColorDarkVibrant)
-                                    binding.classificationTitle.setTextColor(textColor)
-                                    binding.colorfullScoreNumber.setTextColor(textColor)
-                                    binding.credLine.setTextColor(textColor)
-                                    binding.colorfulnessScore.setTextColor(textColor)
-                                    binding.placeOfOrigin.setTextColor(textColor)
-                                    binding.styleTitle.setTextColor(textColor)
+                                        binding.artistNameDisplay.setTextColor(textColor)
+                                        binding.scrollView.setBackgroundColor(intColorDarkVibrant)
+                                        binding.classificationTitle.setTextColor(textColor)
+                                        binding.colorfullScoreNumber.setTextColor(textColor)
+                                        binding.credLine.setTextColor(textColor)
+                                        binding.colorfulnessScore.setTextColor(textColor)
+                                        binding.placeOfOrigin.setTextColor(textColor)
+                                        binding.styleTitle.setTextColor(textColor)
 
-                                })
+                                    })
                             }
                             return false
                         }
                     })
                     .transition(withCrossFade())
                     .into(binding.deatilImageView)
-            } catch (e: IOException) {
+            }
+            catch (e: IOException) {
                 e.printStackTrace()
             }
         }
     }
-
-
-
 
 }
 

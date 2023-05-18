@@ -22,7 +22,6 @@ class FavoritesFragment : Fragment() {
     lateinit var binding: FragmentFavoritesBinding
     lateinit var artAdapter: ArtAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,11 +37,8 @@ class FavoritesFragment : Fragment() {
 
         setUpRecyclerView()
         artAdapter.setOnItemClickListener {
-
             this.findNavController()
-                .navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(
-                    it)
-                )
+                .navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(it))
         }
 
 
@@ -71,8 +67,6 @@ class FavoritesFragment : Fragment() {
             }
         }
 
-
-
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(binding.rvSavedArt)
         }
@@ -91,7 +85,6 @@ class FavoritesFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
         }
     }
-
 }
 
 
