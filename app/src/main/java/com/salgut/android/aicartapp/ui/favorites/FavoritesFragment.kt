@@ -41,7 +41,6 @@ class FavoritesFragment : Fragment() {
                 .navigate(FavoritesFragmentDirections.actionNavigationFavoritesToArtworkDetailFragment(it))
         }
 
-
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -53,7 +52,6 @@ class FavoritesFragment : Fragment() {
             ): Boolean {
                 return true
             }
-
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val artwork = artAdapter.differ.currentList[position]

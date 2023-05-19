@@ -25,6 +25,5 @@ class Constants {
                 "colorfulness"
         const val SEARCH_ART_TIME_DELAY = 600L
         const val QUERY_PAGE_SIZE = 10
-
     }
 }

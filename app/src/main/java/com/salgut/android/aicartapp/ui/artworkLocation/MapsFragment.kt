@@ -39,13 +39,10 @@ class MapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val art = args.mapsArtworkSelected
         lat = art.latitude?.toDouble()!!
         long = art.longitude?.toDouble()!!
         val mapFragment = childFragmentManager.findFragmentById(this.id) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
-
     }
 }

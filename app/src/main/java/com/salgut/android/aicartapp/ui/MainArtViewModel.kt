@@ -94,19 +94,10 @@ class MainArtViewModel(
 
                     searchArtResponse = resultResponse
                 } else {
-
-                    //TODO fix pagination calling clear...
-
                     val oldArtworks = searchArtResponse?.artworkObject
-
                     val newArtworks = resultResponse.artworkObject
-//                    oldArtworks?.addAll(0,newArtworks)
-
-
                     val index = oldArtworks?.size
                     oldArtworks?.addAll(newArtworks)
-
-
                 }
                 return Resource.Success(searchArtResponse ?: resultResponse)
             }
@@ -122,18 +113,10 @@ class MainArtViewModel(
 
                     searchArtResponse = resultResponse
                 } else {
-
-
                     val oldArtworks = searchArtResponse?.artworkObject
-
                     val newArtworks = resultResponse.artworkObject
-
-
-
                     oldArtworks?.clear()
                     oldArtworks?.addAll(newArtworks)
-
-
                 }
                 return Resource.Success(searchArtResponse ?: resultResponse)
             }
